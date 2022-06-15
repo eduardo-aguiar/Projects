@@ -45,6 +45,13 @@ To develop all apps and packages, run the following command:
 cd my-turborepo
 npm run dev
 ```
+### Develop
+
+To install packages to individual workspaces:
+
+```
+yarn workspace next-app add -D typescript
+```
 
 ### Remote Caching
 

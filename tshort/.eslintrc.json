@@ -1,0 +1,64 @@
+{
+  "extends": ["next", "prettier", "airbnb", "airbnb-typescript"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["prettier", "simple-import-sort"],
+  "rules": {
+    "prettier/prettier": "error",
+    "linebreak-style": ["error", "windows"],
+    "no-param-reassign": ["error", { "props": false }],
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-wrap-multilines": 0,
+    "operator-linebreak": 0,
+    "implicit-arrow-linebreak": 0,
+    "object-curly-newline": 0,
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["__typename"]
+      }
+    ],
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "enums": "always-multiline",
+        "functions": "never"
+      }
+    ],
+    "function-paren-newline": "off",
+    "@typescript-eslint/indent": 0,
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          // React/MUI packages
+          ["^react", "^@?\\w"],
+          ["^@mui", "^@?\\w"],
+          ["^next", "^@?\\w"],
+          // Types
+          ["^(types)(/.*|$)"],
+          ["^(@enums)(/.*|$)"],
+          // Internal
+          ["^(@api)(/.*|$)"],
+          ["^(@components)(/.*|$)"],
+          ["^(@pages)(/.*|$)"],
+          ["^(@utils)(/.*|$)"],
+          ["^(@schemas)(/.*|$)"],
+          // Test helpers
+          ["^(@testHelpers)(/.*|$)"],
+          // Parent and relative imports
+          ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+          // Style imports
+          ["^.+\\.?(scss)$"]
+        ]
+      }
+    ]
+  }
+}
