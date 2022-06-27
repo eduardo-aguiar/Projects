@@ -1,8 +1,22 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import { SessionProvider } from "next-auth/react";
+import React from "react";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+import WithAuth from "../helpers/WithAuth";
+import { ExtendedAppProps } from "../types";
 
-export default MyApp
+const MyApp = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}: ExtendedAppProps) => (
+    <SessionProvider refetchInterval={5 * 60} session={session}>
+        {Component.auth ? (
+          <WithAuth options={Component.auth}>
+            <Component {...pageProps} />
+          </WithAuth>
+        ) : (
+          <Component {...pageProps} />
+        )}
+    </SessionProvider>
+  );
+
+export default MyApp;

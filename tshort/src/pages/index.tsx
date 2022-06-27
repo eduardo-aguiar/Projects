@@ -1,12 +1,38 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { Paper } from "@mui/material";
+import { getSession, useSession } from "next-auth/react";
 
-const Home: NextPage = () => {
-  return (
-   <div>hi</div>
-  )
+import AccessDenied from "../components/AccessDenied";
+
+
+const Page = () => {
+
+  const { status, data: session } = useSession({
+    required: false,
+  });
+
+  console.log(session);
+  // If no session exists, display access denied message
+  if (!session) {
+ return <Paper><AccessDenied /></Paper>;
 }
 
-export default Home
+  // If session exists, display content
+  return (
+    <Paper>
+      <h1>Protected Page</h1>
+      <p><strong>Welcome {session.user.name}</strong></p>
+    </Paper>
+  );
+};
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session,
+    },
+  };
+}
+
+export default Page;
