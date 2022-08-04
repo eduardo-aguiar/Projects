@@ -1,17 +1,11 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from 'next';
 
-interface Props {
+interface Props {}
 
-}
-
-const BlogCard: NextPage<Props> = (props) => (
-    <div>
-        {JSON.stringify(props)}
-    </div>
-    );
+const BlogCard: NextPage<Props> = (props) => <div>{JSON.stringify(props)}</div>;
 
 export const getStaticProps: GetStaticProps = async (context) => ({
-        props: context,
-    });
+  props: context,
+});
 
 export default BlogCard;

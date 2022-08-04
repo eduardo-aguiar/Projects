@@ -1,6 +1,6 @@
-import router from "next/router";
-import { signIn, useSession } from "next-auth/react";
-import { useEffect } from "react";
+import router from 'next/router';
+import { signIn, useSession } from 'next-auth/react';
+import { useEffect } from 'react';
 
 const WithAuth = ({ children, options }) => {
   const { data: session, status } = useSession();
@@ -8,7 +8,7 @@ const WithAuth = ({ children, options }) => {
 
   useEffect(() => {
     // Do nothing while loading
-    if (status === "loading") {
+    if (status === 'loading') {
       return;
     }
 
@@ -30,11 +30,7 @@ const WithAuth = ({ children, options }) => {
    * Session is being fetched, or no user.
    * If no user, useEffect() will redirect.
    */
-  return (
-    <div>
-      Loading...
-    </div>
-  );
+  return <div>Loading...</div>;
 };
 
 export default WithAuth;

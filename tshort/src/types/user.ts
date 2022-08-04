@@ -1,4 +1,4 @@
-import { Posts } from "./posts";
+import { Posts } from './posts';
 
 export type User = {
   name: string;

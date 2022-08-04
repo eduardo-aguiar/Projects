@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@emotion/cache": "^11.9.3",
@@ -20,14 +21,17 @@
     "@prisma/client": "^3.15.1",
     "@types/next-auth": "^3.15.0",
     "axios": "^0.27.2",
+    "classnames": "^2.3.1",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.30.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "next": "12.1.6",
     "next-auth": "^4.6.1",
+    "prettier": "^2.7.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
+    "sass": "^1.54.0",
     "yarn": "^1.22.19"
   },
   "devDependencies": {

@@ -1,11 +1,9 @@
-import { Paper } from "@mui/material";
-import { getSession, useSession } from "next-auth/react";
+import { Button, Paper } from '@mui/material';
+import { getSession, signOut, useSession } from 'next-auth/react';
 
-import AccessDenied from "../components/AccessDenied";
-
+import AccessDenied from '../components/AccessDenied';
 
 const Page = () => {
-
   const { status, data: session } = useSession({
     required: false,
   });
@@ -13,14 +11,23 @@ const Page = () => {
   console.log(session);
   // If no session exists, display access denied message
   if (!session) {
- return <Paper><AccessDenied /></Paper>;
-}
+    return (
+      <Paper>
+        <AccessDenied />
+      </Paper>
+    );
+  }
 
   // If session exists, display content
   return (
-    <Paper>
+    <Paper color="primary">
       <h1>Protected Page</h1>
-      <p><strong>Welcome {session.user.name}</strong></p>
+      <p>
+        <strong>Welcome {session.user.name}</strong>
+      </p>
+      <Button color="secondary" variant="contained" onClick={() => signOut()}>
+        Log Out
+      </Button>
     </Paper>
   );
 };

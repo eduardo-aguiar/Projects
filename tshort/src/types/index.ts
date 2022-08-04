@@ -1,5 +1,5 @@
-import { AppProps } from "next/app";
-import { Component } from "react";
+import { AppProps } from 'next/app';
+import { Component } from 'react';
 
 export type AuthenticatedPage = {
   role?: string;
